@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Xcape</title>
+    <link rel="icon" type="image/x-icon" href="Xcape_logo.png">
+</head>
+<body>
+<center><h1>Xcape</h1></center>
+<center>
+    <div style="width:265px;">
+<div id="row1">
+    <div id="1_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="2_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="3_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="4_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="5_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+</div>
+<div id="row2">
+    <div id="1_2" style="clear:both; float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="2_2" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="3_2" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="4_2" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="5_2" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+</div>
+<div id="row3">
+    <div id="1_3" style="clear:both; float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="2_3" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="3_3" style="background: greenyellow; float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="4_3" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="5_3" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+</div>
+<div id="row4">
+    <div id="1_4" style="clear:both; float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="2_4" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="3_4" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="4_4" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="5_4" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+</div>
+<div id="row5">
+    <div id="1_5" style="clear:both; float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="2_5" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="3_5" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="4_5" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+    <div id="5_5" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
+</div>
+    </div>
+</center>
+
+<br style="clear:both;"/>
+<br style="clear:both;"/>
+
+<center>
+<table>
+    <tr>
+        <td>
+            <button onclick="moveLeft();">&larr;</button>
+        </td>
+        <td>
+            <button onclick="moveUp();">&uarr;</button><br/>
+            <button onclick="moveDown();">&darr;</button>
+        </td>
+        <td>
+            <button onclick="moveRight();">&rarr;</button>
+        </td>
+    </tr>
+</table>
+</center>
+
+<!-- Moving JavaScript -->
+<script>
+    let x=3;
+    let y=3;
+
+    function moveLeft() {
+        // Can we move left?
+        if (x > 1) {
+            // Change current position to background gray.
+            document.getElementById(x+"_"+y).style.backgroundColor = "lightgray";
+
+            // Change the current position!
+            x -= 1
+
+            // Change the current position to background yellow.
+            document.getElementById(x+"_"+y).style.backgroundColor = "greenyellow";
+        }
+        else {
+            alert("You can't go off the board, dude!");
+        }
+        postMove();
+    }
+
+    function moveRight() {
+        // Can we move right?
+        if (x < 5) {
+            // Change current position to background gray.
+            document.getElementById(x+"_"+y).style.backgroundColor = "lightgray";
+
+            // Change the current position!
+            x += 1
+
+            // Change the current position to background yellow.
+            document.getElementById(x+"_"+y).style.backgroundColor = "greenyellow";
+        }
+        else {
+            alert("You can't go off the board, dude!");
+        }
+        postMove();
+    }
+
+    function moveUp() {
+        // Can we move up?
+        if (y > 1) {
+            // Change current position to background gray.
+            document.getElementById(x+"_"+y).style.backgroundColor = "lightgray";
+
+            // Change the current position!
+            y -= 1
+
+            // Change the current position to background yellow.
+            document.getElementById(x+"_"+y).style.backgroundColor = "greenyellow";
+        }
+        else {
+            alert("You can't go off the board! {-^-}/}  ");
+        }
+        postMove();
+    }
+
+    function moveDown() {
+        // Can we move down?
+        if (y < 5) {
+            // Change current position to background gray.
+            document.getElementById(x+"_"+y).style.backgroundColor = "lightgray";
+
+            // Change the current position!
+            y += 1
+
+            // Change the current position to background yellow.
+            document.getElementById(x+"_"+y).style.backgroundColor = "greenyellow";
+        }
+        else {
+            alert("You can't go off the board, dude!");
+        }
+        postMove();
+    }
+</script>
+
+<!--Mines JavaScript -->
+
+<script>
+
+    let randomx3 = [Math.ceil(Math.random() * 5)];
+    let randomy3 = [Math.ceil(Math.random() * 5)];
+
+    let randomcoor3 = randomx3+"_"+randomy3;
+
+    document.getElementById(randomcoor3).style.backgroundColor = "hotpink";
+
+    while (randomcoor3 == "3_3") {
+
+        let randomx3 = [Math.ceil(Math.random() * 5)];
+        let randomy3 = [Math.ceil(Math.random() * 5)];
+
+        let randomcoor3 = randomx3+"_"+randomy3;
+
+    }
+
+    let randomx = [Math.ceil(Math.random() * 5)];
+    let randomy = [Math.ceil(Math.random() * 5)];
+
+    let randomcoor = randomx+"_"+randomy;
+
+    document.getElementById(randomcoor).style.backgroundColor = "darkred";
+
+    if (randomcoor == randomcoor3) {
+        document.getElementById(randomcoor).style.backgroundColor = "hotpink";
+    }
+    if (randomcoor == 3+"_"+3) {
+        document.getElementById(randomcoor).style.backgroundColor = "greenyellow";
+    }
+    let randomx2 = [Math.ceil(Math.random() * 5)];
+    let randomy2 = [Math.ceil(Math.random() * 5)];
+
+    let randomcoor2 = randomx2+"_"+randomy2;
+
+    document.getElementById(randomcoor2).style.backgroundColor = "darkred";
+
+    if (randomcoor2 == randomcoor3) {
+        document.getElementById(randomcoor2).style.backgroundColor = "hotpink";
+    }
+    else if (randomcoor2 == 3+"_"+3) {
+        document.getElementById(randomcoor2).style.backgroundColor = "greenyellow";
+    }
+
+    function postMove() {
+        if (document.getElementById(randomcoor3).style.backgroundColor == "greenyellow") {
+            alert("You Scorrrreeddddddd!!! {-_-}/}");
+            window.location = "Excape.html";
+        }
+        else if (document.getElementById(randomcoor).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor2).style.backgroundColor == "greenyellow") {
+            alert("You ran into a mine! {-^-}/}");
+            window.location = "Excape.html";
+        }
+    }
+
+</script>
+
+<center><h2>Directions</h2></center>
+<center><h3>
+    The green filled square is your character. Click on the arrow buttons to move your character.
+    Get to the pink filled square to win the game.
+<br>
+<br>
+    DO NOT touch the red squares or the game starts over.
+<br>
+<br>
+    Race with other people to have fun. Once you get to the green outlined square, you get a point. First
+    to 5 points win. Or go for the 10!
+</h3></center>
+
+</body>
+</html>
