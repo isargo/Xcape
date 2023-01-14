@@ -5,6 +5,7 @@
     <link rel="icon" type="image/x-icon" href="Xcape_logo.png">
 </head>
 <body>
+<div id="scoreboard" style="position:absolute; padding:10px; right:0;">SCORE</div>
 <center><h1>Xcape</h1></center>
 <center>
     <div style="width:265px;">
@@ -68,6 +69,27 @@
 
 <!-- Moving JavaScript -->
 <script>
+    if (window.localStorage.getItem('currentScore') == null) {
+        window.localStorage.setItem('currentScore', '0');
+        window.localStorage.setItem('upgradeLevel', '0');
+    }
+
+    function getScore() {
+        return +(window.localStorage.getItem('currentScore'));
+    }
+
+    function addToScore(points_to_add) {
+        let new_score = getScore() + points_to_add;
+        window.localStorage.setItem('currentScore', new_score);
+        updateScoreboard();
+    }
+
+    // Update the scoreboard
+    function updateScoreboard() {
+        document.getElementById('scoreboard').innerHTML = "SCORE: <b>" + getScore() + "</b>";
+    }
+
+    updateScoreboard();
 
     document.onkeydown = function (event) {
         switch (event.keyCode) {
@@ -287,15 +309,34 @@
         function postMove() {
             if (document.getElementById(randomfincoor1).style.backgroundColor == "greenyellow") {
                 alert("You Scorrrreeddddddd!!! {-_-}/}");
+                addToScore(5);
                 window.location = "Excape.html";
             } else if (document.getElementById(randomcoor).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor2).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor3).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor4).style.backgroundColor == "greenyellow") {
                 alert("You ran into a mine! {-^-}/}");
+                addToScore(-2);
                 window.location = "Excape.html";
             }
         }
 
+        function resetScore() {
+            addToScore(-getScore())
+        }
 
 
+
+</script>
+
+<!-- Upgrades script -->
+
+<script>
+    if (getScore() >= 500) {
+        let upgradeLevel = +window.localStorage.getItem("upgradeLevel")
+        if (upgradeLevel < 1) {
+            upgradeLevel = 1
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Press Q for easter egg! {-_-}/}")
+        }
+    }
 </script>
 
 <center><h2>Directions</h2></center>
@@ -309,7 +350,11 @@
 <br>
     Race with other people to have fun. Once you get to the green outlined square, you get a point. First
     to 5 points win. Or go for the 10!
+<br>
+<br>
+    The first (and only so-far) upgrade is reached when your score gets to 500!
 </h4></center>
+<center onclick = resetScore()><button>Reset Score</button></center>
 
 </body>
 </html>
