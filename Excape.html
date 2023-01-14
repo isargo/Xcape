@@ -83,6 +83,12 @@
             case 40:
                 moveDown();
                 break;
+            case 81:
+                mine1Egg();
+                mine2Egg();
+                mine3Egg();
+                mine4Egg();
+                break;
         }
     };
 
@@ -165,23 +171,23 @@
 <!--Mines JavaScript -->
 
 <script>
+    //Random finish location
+    let randomfinx1 = [Math.ceil(Math.random() * 5)];
+    let randomfiny1 = [Math.ceil(Math.random() * 5)];
 
-    let randomx3 = [Math.ceil(Math.random() * 5)];
-    let randomy3 = [Math.ceil(Math.random() * 5)];
+    let randomfincoor1 = randomfinx1+"_"+randomfiny1;
 
-    let randomcoor3 = randomx3+"_"+randomy3;
+    document.getElementById(randomfincoor1).style.backgroundColor = "hotpink";
 
-    document.getElementById(randomcoor3).style.backgroundColor = "hotpink";
+    while (randomfincoor1 == "3_3") {
 
-    while (randomcoor3 == "3_3") {
+        let randomfinex1 = [Math.ceil(Math.random() * 5)];
+        let randomfiny1 = [Math.ceil(Math.random() * 5)];
 
-        let randomx3 = [Math.ceil(Math.random() * 5)];
-        let randomy3 = [Math.ceil(Math.random() * 5)];
-
-        let randomcoor3 = randomx3+"_"+randomy3;
+        let randomfincoor1 = randomfinx1+"_"+randomfiny1;
 
     }
-
+    //Random mine #1
     let randomx = [Math.ceil(Math.random() * 5)];
     let randomy = [Math.ceil(Math.random() * 5)];
 
@@ -189,12 +195,23 @@
 
     document.getElementById(randomcoor).style.backgroundColor = "darkred";
 
-    if (randomcoor == randomcoor3) {
+    function mine1Egg() {
+        document.getElementById(randomcoor).style.backgroundColor = "aquamarine";
+        if (randomcoor == randomfincoor1) {
+            document.getElementById(randomcoor).style.backgroundColor = "hotpink";
+        }
+        if (randomcoor == 3+"_"+3) {
+            document.getElementById(randomcoor).style.backgroundColor = "greenyellow";
+        }
+    }
+
+    if (randomcoor == randomfincoor1) {
         document.getElementById(randomcoor).style.backgroundColor = "hotpink";
     }
     if (randomcoor == 3+"_"+3) {
         document.getElementById(randomcoor).style.backgroundColor = "greenyellow";
     }
+    //Random mine #2
     let randomx2 = [Math.ceil(Math.random() * 5)];
     let randomy2 = [Math.ceil(Math.random() * 5)];
 
@@ -202,23 +219,82 @@
 
     document.getElementById(randomcoor2).style.backgroundColor = "darkred";
 
-    if (randomcoor2 == randomcoor3) {
+    function mine2Egg() {
+        document.getElementById(randomcoor2).style.backgroundColor = "aquamarine";
+        if (randomcoor2 == randomfincoor1) {
+            document.getElementById(randomcoor2).style.backgroundColor = "hotpink";
+        }
+        else if (randomcoor2 == 3+"_"+3) {
+            document.getElementById(randomcoor2).style.backgroundColor = "greenyellow";
+        }
+    }
+
+    if (randomcoor2 == randomfincoor1) {
         document.getElementById(randomcoor2).style.backgroundColor = "hotpink";
     }
     else if (randomcoor2 == 3+"_"+3) {
         document.getElementById(randomcoor2).style.backgroundColor = "greenyellow";
     }
+    //Random mine #3
+    let randomx3 = [Math.ceil(Math.random() * 5)];
+    let randomy3 = [Math.ceil(Math.random() * 5)];
 
-    function postMove() {
-        if (document.getElementById(randomcoor3).style.backgroundColor == "greenyellow") {
-            alert("You Scorrrreeddddddd!!! {-_-}/}");
-            window.location = "Excape.html";
+    let randomcoor3 = randomx3+"_"+randomy3;
+
+    document.getElementById(randomcoor3).style.backgroundColor = "darkred";
+
+    function mine3Egg() {
+        document.getElementById(randomcoor3).style.backgroundColor = "aquamarine";
+        if (randomcoor3 == randomfincoor1) {
+            document.getElementById(randomcoor3).style.backgroundColor = "hotpink";
         }
-        else if (document.getElementById(randomcoor).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor2).style.backgroundColor == "greenyellow") {
-            alert("You ran into a mine! {-^-}/}");
-            window.location = "Excape.html";
+        if (randomcoor3 == 3+"_"+3) {
+            document.getElementById(randomcoor3).style.backgroundColor = "greenyellow";
         }
     }
+
+    if (randomcoor3 == randomfincoor1) {
+        document.getElementById(randomcoor3).style.backgroundColor = "hotpink";
+    }
+    if (randomcoor3 == 3+"_"+3) {
+        document.getElementById(randomcoor3).style.backgroundColor = "greenyellow";
+    }
+
+    //Random mine #4
+    let randomx4 = [Math.ceil(Math.random() * 5)];
+    let randomy4 = [Math.ceil(Math.random() * 5)];
+
+    let randomcoor4 = randomx4+"_"+randomy4;
+
+    document.getElementById(randomcoor4).style.backgroundColor = "darkred";
+
+    function mine4Egg() {
+        document.getElementById(randomcoor4).style.backgroundColor = "aquamarine";
+        if (randomcoor4 == randomfincoor1) {
+            document.getElementById(randomcoor4).style.backgroundColor = "hotpink";
+        } else if (randomcoor4 == 3 + "_" + 3) {
+            document.getElementById(randomcoor4).style.backgroundColor = "greenyellow";
+        }
+    }
+        if (randomcoor4 == randomfincoor1) {
+            document.getElementById(randomcoor4).style.backgroundColor = "hotpink";
+        } else if (randomcoor4 == 3 + "_" + 3) {
+            document.getElementById(randomcoor4).style.backgroundColor = "greenyellow";
+        }
+
+
+        //Alerting if you won or ran into a mine
+        function postMove() {
+            if (document.getElementById(randomfincoor1).style.backgroundColor == "greenyellow") {
+                alert("You Scorrrreeddddddd!!! {-_-}/}");
+                window.location = "Excape.html";
+            } else if (document.getElementById(randomcoor).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor2).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor3).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor4).style.backgroundColor == "greenyellow") {
+                alert("You ran into a mine! {-^-}/}");
+                window.location = "Excape.html";
+            }
+        }
+
+
 
 </script>
 
