@@ -72,10 +72,19 @@
     if (window.localStorage.getItem('currentScore') == null) {
         window.localStorage.setItem('currentScore', '0');
         window.localStorage.setItem('upgradeLevel', '0');
+        window.localStorage.setItem('totalWins', '0')
     }
-
+    function addToWins(wins_to_add) {
+        let new_wins = getWins() + wins_to_add;
+        window.localStorage.setItem('totalWins', new_wins);
+        updateScoreboard();
+    }
     function getScore() {
         return +(window.localStorage.getItem('currentScore'));
+    }
+
+    function getWins() {
+        return +(window.localStorage.getItem('totalWins'));
     }
 
     function addToScore(points_to_add) {
@@ -87,6 +96,7 @@
     // Update the scoreboard
     function updateScoreboard() {
         document.getElementById('scoreboard').innerHTML = "SCORE: <b>" + getScore() + "</b>";
+        document.getElementById('scoreboard').innerHTML += "<br> WINS: <b>" + getWins() + "</b>";
     }
 
     updateScoreboard();
@@ -310,6 +320,7 @@
             if (document.getElementById(randomfincoor1).style.backgroundColor == "greenyellow") {
                 alert("You Scorrrreeddddddd!!! {-_-}/}");
                 addToScore(5);
+                addToWins(1);
                 window.location = "Excape.html";
             } else if (document.getElementById(randomcoor).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor2).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor3).style.backgroundColor == "greenyellow" || document.getElementById(randomcoor4).style.backgroundColor == "greenyellow") {
                 alert("You ran into a mine! {-^-}/}");
