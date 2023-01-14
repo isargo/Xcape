@@ -68,6 +68,24 @@
 
 <!-- Moving JavaScript -->
 <script>
+
+    document.onkeydown = function (event) {
+        switch (event.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 40:
+                moveDown();
+                break;
+        }
+    };
+
     let x=3;
     let y=3;
 
