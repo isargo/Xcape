@@ -5,9 +5,15 @@
     <link rel="icon" type="image/x-icon" href="Xcape_logo.png">
 </head>
 <body>
+
+<!-- Scoreboard stuff -->
+
 <div id="scoreboard" style="position:absolute; padding:10px; right:0;">SCORE</div>
 <center><h1>Xcape</h1></center>
 <center>
+
+<!-- Pixels or squares. -->
+
     <div style="width:265px;">
 <div id="row1">
     <div id="1_1" style="float: left; width: 50px; height: 50px; border: 1px solid black;"></div>
@@ -50,6 +56,8 @@
 <br style="clear:both;"/>
 <br style="clear:both;"/>
 
+<!-- Arrow button display -->
+
 <center>
 <table>
     <tr>
@@ -67,7 +75,8 @@
 </table>
 </center>
 
-<!-- Moving JavaScript -->
+<!-- everything that goes inside the scoreboard -->
+
 <script>
     if (window.localStorage.getItem('currentScore') == null) {
         window.localStorage.setItem('currentScore', '0');
@@ -101,6 +110,8 @@
 
     updateScoreboard();
 
+    //Arrow keyboard, and easter egg key
+
     document.onkeydown = function (event) {
         switch (event.keyCode) {
             case 37:
@@ -126,6 +137,8 @@
 
     let x=3;
     let y=3;
+
+    // Moving Functions
 
     function moveLeft() {
         // Can we move left?
@@ -315,7 +328,7 @@
         }
 
 
-        //Alerting if you won or ran into a mine
+        //Alerting if you won or ran into a mine, and updating scoreboard.
         function postMove() {
             if (document.getElementById(randomfincoor1).style.backgroundColor == "greenyellow") {
                 alert("You Scorrrreeddddddd!!! {-_-}/}");
@@ -328,7 +341,7 @@
                 window.location = "Excape.html";
             }
         }
-
+//Function for resetting score ONLY
         function resetScore() {
             addToScore(-getScore())
         }
@@ -340,6 +353,8 @@
 <!-- Upgrades script -->
 
 <script>
+
+    //First upgrade
     if (getScore() >= 500) {
         let upgradeLevel = +window.localStorage.getItem("upgradeLevel")
         if (upgradeLevel < 1) {
@@ -348,7 +363,10 @@
             alert("Press Q for easter egg! {-_-}/}")
         }
     }
+
 </script>
+
+<!-- Directions -->
 
 <center><h2>Directions</h2></center>
 <center><h4>
@@ -365,6 +383,9 @@
 <br>
     The first (and only so-far) upgrade is reached when your score gets to 500!
 </h4></center>
+
+<!-- Reset Score button -->
+
 <center onclick = resetScore()><button>Reset Score</button></center>
 
 </body>
