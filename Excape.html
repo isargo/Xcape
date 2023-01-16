@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Xcape</title>
-    <link rel="icon" type="image/x-icon" href="Xcape_logo.png">
+    <link rel="icon" type="image/x-icon" href="pixil-frame-0.png">
 </head>
 <body>
 
@@ -81,7 +81,7 @@
     if (window.localStorage.getItem('currentScore') == null) {
         window.localStorage.setItem('currentScore', '0');
         window.localStorage.setItem('upgradeLevel', '0');
-        window.localStorage.setItem('totalWins', '0')
+        window.localStorage.setItem('totalWins', '0');
     }
     function addToWins(wins_to_add) {
         let new_wins = getWins() + wins_to_add;
@@ -354,9 +354,10 @@
 
 <script>
 
+    let upgradeLevel = +window.localStorage.getItem("upgradeLevel")
+
     //First upgrade
     if (getScore() >= 500) {
-        let upgradeLevel = +window.localStorage.getItem("upgradeLevel")
         if (upgradeLevel < 1) {
             upgradeLevel = 1
             window.localStorage.setItem("upgradeLevel", upgradeLevel)
@@ -364,6 +365,21 @@
         }
     }
 
+    if (getScore() >= 750) {
+        if (upgradeLevel < 2) {
+            upgradeLevel = 2
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Badge acquired: LIFTOFF {-_-}/}")
+        }
+    }
+
+    if (getScore() >= 900) {
+        if (upgradeLevel < 3) {
+            upgradeLevel = 3
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Badge acquired: SUNRISE {-_-}/}")
+        }
+    }
 </script>
 
 <!-- Directions -->
@@ -381,12 +397,32 @@
     to 5 points win. Or go for the 10!
 <br>
 <br>
-    The first (and only so-far) upgrade is reached when your score gets to 500!
+    The first upgrade is reached when your score gets to 500!
+    The second is reached when your score gets to 750!
+    The third is at 900 points!
 </h4></center>
 
 <!-- Reset Score button -->
 
 <center onclick = resetScore()><button>Reset Score</button></center>
+
+<!-- BADGES! -->
+
+<center><h2>Badges</h2></center>
+
+<div id = "Badge1"></div>
+<div id = "Badge2"></div>
+<script>
+
+    if (upgradeLevel >= 2) {
+        document.getElementById("Badge1").innerHTML = "<img width=125 src='pixil-frame-0.png' alt='Badge 1'> LIFTOFF; 750 points; COMMON"
+    }
+    if (upgradeLevel >= 3) {
+        document.getElementById("Badge2").innerHTML = "<img width=125 src='pixil-frame-1.png' alt='Badge 1'> SUNRISE; 900 points; COMMON"
+    }
+
+
+</script>
 
 </body>
 </html>
