@@ -380,6 +380,29 @@
             alert("Badge acquired: SUNRISE {-_-}/}")
         }
     }
+
+    if (getScore() >= 1150) {
+        if (upgradeLevel < 4) {
+            upgradeLevel = 4
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Badge acquired: THE MOON {-_-}/}")
+        }
+    }
+
+    if (getScore() >= 1500) {
+        if (upgradeLevel < 5) {
+            upgradeLevel = 5
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Badge acquired: 1ST PLANET")
+        }
+    }
+
+    if (getScore() >= 2000) {
+        upgradeLevel = 6
+        window.localStorage.setItem("upgradeLevel", upgradeLevel)
+        alert("Nice job... 200 points awarded! {-_-}/}")
+        addToScore(200)
+    }
 </script>
 
 <!-- Directions -->
@@ -412,15 +435,22 @@
 
 <div id = "Badge1"></div>
 <div id = "Badge2"></div>
+<div id = "Badge3"></div>
+<div id = "Badge4"></div>
 <script>
 
     if (upgradeLevel >= 2) {
         document.getElementById("Badge1").innerHTML = "<img width=125 src='pixil-frame-0.png' alt='Badge 1'> LIFTOFF; 750 points; COMMON"
     }
     if (upgradeLevel >= 3) {
-        document.getElementById("Badge2").innerHTML = "<img width=125 src='pixil-frame-1.png' alt='Badge 1'> SUNRISE; 900 points; COMMON"
+        document.getElementById("Badge2").innerHTML = "<img width=125 src='pixil-frame-1.png' alt='Badge 2'> SUNRISE; 900 points; COMMON"
     }
-
+    if (upgradeLevel >= 4) {
+        document.getElementById("Badge3").innerHTML = "<img width=125 src='pixil-frame-2.png' alt='Badge 3'> THE MOON; 1150 points; COMMON"
+    }
+    if (upgradeLevel >= 5) {
+        document.getElementById("Badge4").innerHTML = "<img width=125 src='pixil-frame-3.png' alt='Badge 4'> 1ST PLANET; 1500 points; COMMON"
+    }
 
 </script>
 
