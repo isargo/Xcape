@@ -117,13 +117,25 @@
             case 37:
                 moveLeft();
                 break;
+            case 65:
+                moveLeft();
+                break;
             case 38:
+                moveUp();
+                break;
+            case 87:
                 moveUp();
                 break;
             case 39:
                 moveRight();
                 break;
+            case 68:
+                moveRight();
+                break;
             case 40:
+                moveDown();
+                break;
+            case 83:
                 moveDown();
                 break;
             case 81:
@@ -398,10 +410,20 @@
     }
 
     if (getScore() >= 2000) {
-        upgradeLevel = 6
-        window.localStorage.setItem("upgradeLevel", upgradeLevel)
-        alert("Nice job... 200 points awarded! {-_-}/}")
-        addToScore(200)
+        if (upgradeLevel < 6) {
+            upgradeLevel = 6
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Nice job... 200 points awarded! {-_-}/}")
+            addToScore(200)
+        }
+    }
+
+    if (getScore() >= 2650) {
+        if (upgradeLevel < 7) {
+            upgradeLevel = 7
+            window.localStorage.setItem("upgradeLevel", upgradeLevel)
+            alert("Badge acquired: VEGETATION")
+        }
     }
 </script>
 
@@ -423,6 +445,7 @@
     The first upgrade is reached when your score gets to 500!
     The second is reached when your score gets to 750!
     The third is at 900 points!
+    More after this...
 </h4></center>
 
 <!-- Reset Score button -->
@@ -437,6 +460,7 @@
 <div id = "Badge2"></div>
 <div id = "Badge3"></div>
 <div id = "Badge4"></div>
+<div id = "Badge5"></div>
 <script>
 
     if (upgradeLevel >= 2) {
@@ -449,7 +473,10 @@
         document.getElementById("Badge3").innerHTML = "<img width=125 src='pixil-frame-2.png' alt='Badge 3'> THE MOON; 1150 points; COMMON"
     }
     if (upgradeLevel >= 5) {
-        document.getElementById("Badge4").innerHTML = "<img width=125 src='pixil-frame-3.png' alt='Badge 4'> 1ST PLANET; 1500 points; COMMON"
+        document.getElementById("Badge4").innerHTML = "<img width=125 src='pixil-frame-3.png' alt='Badge 4'> SOLAR PANNELS; 1500 points; COMMON"
+    }
+    if (upgradeLevel >= 7) {
+        document.getElementById("Badge5").innerHTML = "<img width=125 src='pixil-frame-4.png' alt='Badge 4'> VEGETATION; 2650 points; RARE"
     }
 
 </script>
